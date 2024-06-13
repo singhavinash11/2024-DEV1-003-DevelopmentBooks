@@ -104,4 +104,20 @@ class BookStoreServiceTest {
         assertNotNull(orderResponse);
         assertEquals(187.5, orderResponse.getTotalPrice());
     }
+
+    @Test
+    @DisplayName("ShouldCalculateForThreeDifferentAndOneDuplicateBook")
+    void shouldCalculateForThreeDifferentAndOneDuplicateBook() {
+        //Given
+        orderDetails.put("book1", new OrderDetail(1));
+        orderDetails.put("book2", new OrderDetail(1));
+        orderDetails.put("book3", new OrderDetail(2));
+
+        //And
+        OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
+
+        //Then
+        assertNotNull(orderResponse);
+        assertEquals(185, orderResponse.getTotalPrice());
+    }
 }
