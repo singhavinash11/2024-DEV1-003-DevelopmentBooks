@@ -13,10 +13,11 @@ public class BookStoreService {
     private static final Map<String, String> BOOKS_CATALOG = Map.of(
             "book1", "description 1",
             "book2", "description 2",
-            "book3", "description 3"
+            "book3", "description 3",
+            "book4", "description 4"
     );
     private static final double PRICE_PER_BOOK = 50;
-    private static final double[] DISCOUNTS = {0, 0.05, 0.10};
+    private static final double[] DISCOUNTS = {0, 0.05, 0.10, 0.20};
 
     public OrderResponse calculatePrice(Map<String, OrderDetail> order) {
         Map<String, OrderDetail> validBooks = order.entrySet()
