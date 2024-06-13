@@ -38,6 +38,7 @@ class BookStoreServiceTest {
         OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
 
         //Then
+        assertNotNull(orderResponse);
         assertEquals(100, orderResponse.getTotalPrice());
     }
 
@@ -52,6 +53,7 @@ class BookStoreServiceTest {
         OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
 
         //Then
+        assertNotNull(orderResponse);
         assertEquals(95, orderResponse.getTotalPrice());
     }
 
@@ -67,6 +69,7 @@ class BookStoreServiceTest {
         OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
 
         //Then
+        assertNotNull(orderResponse);
         assertEquals(135, orderResponse.getTotalPrice());
     }
 
@@ -119,5 +122,23 @@ class BookStoreServiceTest {
         //Then
         assertNotNull(orderResponse);
         assertEquals(185, orderResponse.getTotalPrice());
+    }
+
+    @Test
+    @DisplayName("ShouldCalculateForRandomCombination")
+    void shouldCalculateForRandomCombination() {
+        //Given
+        orderDetails.put("book1", new OrderDetail(2));
+        orderDetails.put("book2", new OrderDetail(2));
+        orderDetails.put("book3", new OrderDetail(2));
+        orderDetails.put("book4", new OrderDetail(1));
+        orderDetails.put("book5", new OrderDetail(1));
+
+        //And
+        OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
+
+        //Then
+        assertNotNull(orderResponse);
+        assertEquals(320, orderResponse.getTotalPrice());
     }
 }

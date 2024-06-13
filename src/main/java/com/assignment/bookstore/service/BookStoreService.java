@@ -4,7 +4,8 @@ import com.assignment.bookstore.model.OrderDetail;
 import com.assignment.bookstore.model.OrderResponse;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -26,30 +27,38 @@ public class BookStoreService {
                 .filter(entry -> BOOKS_CATALOG.containsKey(entry.getKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        int[] quantities = validBooks.values()
+        List<Integer> quantities = validBooks.values()
                 .stream()
-                .mapToInt(OrderDetail::getQuantity)
-                .toArray();
+                .map(OrderDetail::getQuantity)
+                .toList();
 
-        double calculatedPrice = calculatePrice(quantities);
+        double calculatedBestPrice = calculateBestPrice(quantities);
         return OrderResponse.builder()
-                .totalPrice(calculatedPrice)
+                .totalPrice(calculatedBestPrice)
                 .evaluatedOrder(validBooks)
                 .build();
     }
 
-    private double calculatePrice(int[] quantities) {
-        double total = 0;
-        while (Arrays.stream(quantities).sum() > 0) {
-            int differentBooks = 0;
-            for (int i = 0; i < quantities.length; i++) {
-                if (quantities[i] > 0) {
-                    quantities[i]--;
-                    differentBooks++;
+    private double calculateBestPrice(List<Integer> quantities) {
+        double bestPrice = Double.MAX_VALUE;
+
+        for (int setSize = 1; setSize <= 5; setSize++) {
+            double price = 0;
+            List<Integer> remainingQuantities = new ArrayList<>(quantities);
+
+            while (remainingQuantities.stream().anyMatch(currentElement -> currentElement > 0)) {
+                int differentBooks = 0;
+
+                for (int i = 0; i < remainingQuantities.size(); i++) {
+                    if (remainingQuantities.get(i) > 0 && differentBooks < setSize) {
+                        remainingQuantities.set(i, remainingQuantities.get(i) - 1);
+                        differentBooks++;
+                    }
                 }
+                price += differentBooks * PRICE_PER_BOOK * (1 - DISCOUNTS[differentBooks - 1]);
             }
-            total += differentBooks * PRICE_PER_BOOK * (1 - DISCOUNTS[differentBooks - 1]);
+            bestPrice = Math.min(bestPrice, price);
         }
-        return total;
+        return bestPrice;
     }
 }
