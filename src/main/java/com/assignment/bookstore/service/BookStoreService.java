@@ -14,10 +14,11 @@ public class BookStoreService {
             "book1", "description 1",
             "book2", "description 2",
             "book3", "description 3",
-            "book4", "description 4"
+            "book4", "description 4",
+            "book5", "description 5"
     );
     private static final double PRICE_PER_BOOK = 50;
-    private static final double[] DISCOUNTS = {0, 0.05, 0.10, 0.20};
+    private static final double[] DISCOUNTS = {0, 0.05, 0.10, 0.20, 0.25};
 
     public OrderResponse calculatePrice(Map<String, OrderDetail> order) {
         Map<String, OrderDetail> validBooks = order.entrySet()
