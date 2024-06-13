@@ -1,6 +1,7 @@
 package com.assignment.bookstore.service;
 
 import com.assignment.bookstore.model.OrderDetail;
+import com.assignment.bookstore.model.OrderResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class BookStoreService {
     private static final double PRICE_PER_BOOK = 50;
     private static final double[] DISCOUNTS = {0, 0.05, 0.10};
 
-    public double calculatePrice(Map<String, OrderDetail> order) {
+    public OrderResponse calculatePrice(Map<String, OrderDetail> order) {
         Map<String, OrderDetail> validBooks = order.entrySet()
                 .stream()
                 .filter(entry -> BOOKS_CATALOG.containsKey(entry.getKey()))
@@ -28,7 +29,11 @@ public class BookStoreService {
                 .mapToInt(OrderDetail::getQuantity)
                 .toArray();
 
-        return calculatePrice(quantities);
+        double calculatedPrice = calculatePrice(quantities);
+        return OrderResponse.builder()
+                .totalPrice(calculatedPrice)
+                .evaluatedOrder(validBooks)
+                .build();
     }
 
     private double calculatePrice(int[] quantities) {

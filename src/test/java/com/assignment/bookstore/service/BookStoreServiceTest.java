@@ -1,6 +1,7 @@
 package com.assignment.bookstore.service;
 
 import com.assignment.bookstore.model.OrderDetail;
+import com.assignment.bookstore.model.OrderResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,8 +33,11 @@ class BookStoreServiceTest {
         //Given
         orderDetails.put("book1", new OrderDetail(2));
 
+        //And
+        OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
+
         //Then
-        assertEquals(100, bookStoreService.calculatePrice(orderDetails));
+        assertEquals(100, orderResponse.getTotalPrice());
     }
 
     @Test
@@ -43,8 +47,11 @@ class BookStoreServiceTest {
         orderDetails.put("book1", new OrderDetail(1));
         orderDetails.put("book2", new OrderDetail(1));
 
+        //And
+        OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
+
         //Then
-        assertEquals(95, bookStoreService.calculatePrice(orderDetails));
+        assertEquals(95, orderResponse.getTotalPrice());
     }
 
     @Test
@@ -55,7 +62,10 @@ class BookStoreServiceTest {
         orderDetails.put("book2", new OrderDetail(1));
         orderDetails.put("book3", new OrderDetail(1));
 
+        //And
+        OrderResponse orderResponse = bookStoreService.calculatePrice(orderDetails);
+
         //Then
-        assertEquals(135, bookStoreService.calculatePrice(orderDetails));
+        assertEquals(135, orderResponse.getTotalPrice());
     }
 }
