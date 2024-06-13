@@ -46,4 +46,16 @@ class BookStoreServiceTest {
         //Then
         assertEquals(95, bookStoreService.calculatePrice(orderDetails));
     }
+
+    @Test
+    @DisplayName("ShouldCalculateForThreeDifferentTypeOfBook")
+    void shouldCalculateForThreeDifferentTypeOfBook() {
+        //Given
+        orderDetails.put("book1", new OrderDetail(1));
+        orderDetails.put("book2", new OrderDetail(1));
+        orderDetails.put("book3", new OrderDetail(1));
+
+        //Then
+        assertEquals(135, bookStoreService.calculatePrice(orderDetails));
+    }
 }
