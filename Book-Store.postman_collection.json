@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "9150365e-b10b-42cc-8aae-bcb58c392db4",
+		"name": "Book-Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29416192"
+	},
+	"item": [
+		{
+			"name": "CalculatePrice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book4\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book5\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/bookstore/total-price",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookstore",
+						"total-price"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OneBook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book2\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "TwoDifferentBooks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ThreeDifferentBooks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ThreeDifferentAndOneDuplicateBook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "FourDifferentBooks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book4\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "FiveDifferentBooks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book4\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book5\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "RandomCombinationOfBooks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book1\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book2\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book3\": {\r\n        \"quantity\": 2\r\n    },\r\n    \"book4\": {\r\n        \"quantity\": 1\r\n    },\r\n    \"book5\": {\r\n        \"quantity\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/bookstore/total-price",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookstore",
+								"total-price"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
