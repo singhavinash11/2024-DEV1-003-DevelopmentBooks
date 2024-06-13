@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 @Service
 public class BookStoreService {
     private static final Map<String, String> BOOKS_CATALOG = Map.of(
-            "book1", "description 1",
-            "book2", "description 2",
-            "book3", "description 3",
-            "book4", "description 4",
-            "book5", "description 5"
+            "book1", "Clean Code (Robert Martin, 2008)",
+            "book2", "The Clean Coder (Robert Martin, 2011)",
+            "book3", "Clean Architecture (Robert Martin, 2017)",
+            "book4", "Test Driven Development by Example (Kent Beck, 2003)",
+            "book5", "Working Effectively With Legacy Code (Michael C. Feathers, 2004)"
     );
     private static final double PRICE_PER_BOOK = 50;
     private static final double[] DISCOUNTS = {0, 0.05, 0.10, 0.20, 0.25};
@@ -24,7 +24,7 @@ public class BookStoreService {
     public OrderResponse calculatePrice(Map<String, OrderDetail> order) {
         Map<String, OrderDetail> validBooks = order.entrySet()
                 .stream()
-                .filter(entry -> BOOKS_CATALOG.containsKey(entry.getKey()))
+                .filter(entry -> BOOKS_CATALOG.containsKey(entry.getKey()) && entry.getValue().getQuantity() > 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         List<Integer> quantities = validBooks.values()
