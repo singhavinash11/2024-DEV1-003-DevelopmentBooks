@@ -42,7 +42,7 @@ public class BookStoreService {
     private double calculateBestPrice(List<Integer> quantities) {
         double bestPrice = Double.MAX_VALUE;
 
-        for (int setSize = 1; setSize <= 5; setSize++) {
+        for (int setSize = 1; setSize <= quantities.size(); setSize++) {
             double price = 0;
             List<Integer> remainingQuantities = new ArrayList<>(quantities);
 
