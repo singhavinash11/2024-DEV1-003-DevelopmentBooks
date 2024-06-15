@@ -1,5 +1,6 @@
 package com.assignment.bookstore.service;
 
+import com.assignment.bookstore.exception.BadRequestException;
 import com.assignment.bookstore.model.OrderDetail;
 import com.assignment.bookstore.model.OrderResponse;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class BookStoreService {
                 .stream()
                 .filter(entry -> BOOKS_CATALOG.containsKey(entry.getKey()) && entry.getValue().getQuantity() > 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        if (validBooks.isEmpty()) {
+            throw new BadRequestException("Price cannot be calculated as either books are unavailable, invalid or total quantity is 0");
+        }
 
         List<Integer> quantities = validBooks.values()
                 .stream()

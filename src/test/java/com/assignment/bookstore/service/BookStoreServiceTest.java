@@ -1,5 +1,6 @@
 package com.assignment.bookstore.service;
 
+import com.assignment.bookstore.exception.BadRequestException;
 import com.assignment.bookstore.model.OrderDetail;
 import com.assignment.bookstore.model.OrderResponse;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class BookStoreServiceTest {
@@ -140,5 +142,16 @@ class BookStoreServiceTest {
         //Then
         assertNotNull(orderResponse);
         assertEquals(320, orderResponse.getTotalPrice());
+    }
+
+    @Test
+    @DisplayName("shouldThrowExceptionForEmptyOrInvalidOrder")
+    void shouldThrowExceptionForEmptyOrInvalidOrder() {
+        //Given
+        orderDetails.put("book1", new OrderDetail(0));
+        orderDetails.put("book2", new OrderDetail(0));
+
+        //Then
+        assertThrows(BadRequestException.class, () -> bookStoreService.calculatePrice(orderDetails));
     }
 }
